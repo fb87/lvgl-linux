@@ -10,7 +10,7 @@ static void build_main_ui(void);
 int main(int argc, char *argv[]) {
     lv_init();
 
-    lv_display_t *dpy = lv_sdl_window_create(800, 600);
+    lv_display_t *dpy = lv_sdl_window_create(640, 720);
     lv_indev_set_display(lv_sdl_mouse_create(), dpy);
     lv_indev_set_display(lv_sdl_keyboard_create(), dpy);
 
@@ -25,10 +25,12 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+
+extern void draw_background(void);
+extern void speedometer(void);
+
 static void build_main_ui(void) {
-    lv_obj_t * spinner = lv_spinner_create(lv_screen_active());
-    lv_obj_set_size(spinner, 100, 100);
-    lv_obj_center(spinner);
-    lv_spinner_set_anim_params(spinner, 10000, 200);
+    draw_background();
+    speedometer();
 }
 
